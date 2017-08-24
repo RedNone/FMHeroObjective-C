@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  NVPlayViewController.h
 //  NVFmHero
 //
 //  Created by mac-228 on 24.08.17.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
-
+@interface NVPlayViewController : UIViewController
 
 @end
-
