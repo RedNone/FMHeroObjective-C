@@ -11,6 +11,4 @@
 - (IBAction)nextButtonAction:(UIButton *)sender;
 
 
-- (void)playMusicWithCurrentRadioId:(int)radioId;
-
 @end

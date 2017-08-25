@@ -3,11 +3,12 @@
 #import "NVDataLoader.h"
 #import "NVConsts.h"
 #import "NVRadioDataModel.h"
+#import "NVAudioController.h"
 
 @interface NVPlayViewController ()
-@property(nonatomic,assign) int currentRadioId;
 @property(nonatomic,retain) AVPlayer *player;
 @property(nonatomic,retain) NVDataLoader *dataLoader;
+@property(nonatomic,retain) NVAudioController *audioController;
 @end
 
 @implementation NVPlayViewController
@@ -19,6 +20,7 @@
     [_playPauseButton release];
     [_player release];
     [_tickerLabel release];
+    [_audioController release];
     [super dealloc];
 }
 
@@ -26,18 +28,21 @@
     [super viewDidLoad];
     
     self.dataLoader = [[[NVDataLoader sharedManager] retain] autorelease];
+    self.audioController = [[[NVAudioController sharedManager] retain] autorelease];
+    
+    NSLog(@"viewDidLoad");
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    if(self.player) {
-        if ((self.player.rate != 0) && (self.player.error == nil)) {
+    if(self.audioController.player) {
+        if ((self.audioController.player.rate != 0) && (self.audioController.player.error == nil)) {
              [self.playPauseButton setImage:[UIImage imageNamed:@"pauseButton"] forState:UIControlStateNormal];
         }
     }
-    if(self.dataLoader.selectRadioWithIndex != -1){
-        NVRadioDataModel *model = [self.dataLoader.radioData objectAtIndex:self.dataLoader.selectRadioWithIndex];
+    if(self.audioController.selectRadioWithIndex != -1){
+        NVRadioDataModel *model = [self.dataLoader.radioData objectAtIndex:self.audioController.selectRadioWithIndex];
         [self initializeTickerLabelWithText:model.radioName] ;
     } else{
         self.tickerLabel.text = @"No radio select";
@@ -48,41 +53,45 @@
 #pragma mark - Button Actions
 
 - (IBAction)playPauseButton:(id)sender {
-    if(!self.player){
-        [self playMusicWithCurrentRadioId:0];
+    if(!self.audioController.player){
+        [self.audioController playMusicWithCurrentRadioId:0];
     }
     
-    if ((self.player.rate != 0) && (self.player.error == nil)) {
-        [self.player pause];
+    if ((self.audioController.player.rate != 0) && (self.audioController.player.error == nil)) {
+        [self.audioController.player pause];
         [self.playPauseButton setImage:[UIImage imageNamed:@"playButton"] forState:UIControlStateNormal];
     } else{
-        [self.player play];
+        [self.audioController.player play];
         [self.playPauseButton setImage:[UIImage imageNamed:@"pauseButton"] forState:UIControlStateNormal];
         
     }
+     NVRadioDataModel *model = [self.dataLoader.radioData objectAtIndex:self.audioController.selectRadioWithIndex];
+     [self initializeTickerLabelWithText:model.radioName];
 }
 
 - (IBAction)backButtonAction:(UIButton *)sender {
-    if(self.player){
-        int radioId = self.currentRadioId;
+    if(self.audioController.player){
+        int radioId = self.audioController.selectRadioWithIndex;
         if(radioId == 0){
             radioId = [self.dataLoader.radioData count] - 1;
         } else{
              --radioId;
         }
        
-        if ((self.player.rate != 0) && (self.player.error == nil)) {
-            [self playMusicWithCurrentRadioId:radioId];
+        NVRadioDataModel *model = [self.dataLoader.radioData objectAtIndex:radioId];
+        
+        if ((self.audioController.player.rate != 0) && (self.audioController.player.error == nil)) {
+            [self.audioController playMusicWithCurrentRadioId:radioId];
         } else{
-            self.currentRadioId = self.dataLoader.selectRadioWithIndex = radioId;
-            [self initializeTickerLabelWithText:[[self.dataLoader.radioData objectAtIndex:radioId] valueForKey:jsonKeyName]];
+            self.audioController.selectRadioWithIndex = radioId;
+            [self initializeTickerLabelWithText:model.radioName];
         }
     }
 }
 
 - (IBAction)nextButtonAction:(UIButton *)sender {
-    if(self.player){
-        int radioId = self.currentRadioId;
+    if(self.audioController.player){
+        int radioId = self.audioController.selectRadioWithIndex;
         
         if(radioId == ([self.dataLoader.radioData count] - 1)){
             radioId = 0;
@@ -90,11 +99,13 @@
             ++radioId;
         }
         
-        if ((self.player.rate != 0) && (self.player.error == nil)) {
-            [self playMusicWithCurrentRadioId:radioId];
+        NVRadioDataModel *model = [self.dataLoader.radioData objectAtIndex:radioId];
+        
+        if ((self.audioController.player.rate != 0) && (self.audioController.player.error == nil)) {
+            [self.audioController playMusicWithCurrentRadioId:radioId];
         } else{
-            self.currentRadioId = self.dataLoader.selectRadioWithIndex = radioId;
-             [self initializeTickerLabelWithText:[[self.dataLoader.radioData objectAtIndex:radioId] valueForKey:jsonKeyName]];
+             self.audioController.selectRadioWithIndex = radioId;
+             [self initializeTickerLabelWithText:model.radioName];
         }
         
     }
@@ -102,32 +113,12 @@
 
 #pragma mark - Radio methods
 
-- (void)playMusicWithCurrentRadioId:(int)radioId{
-    
-    self.currentRadioId = self.dataLoader.selectRadioWithIndex = radioId;
-    
-    NVRadioDataModel *model = [self.dataLoader.radioData objectAtIndex:self.currentRadioId];
-   
-    
-    if(self.player){
-        [self.player pause];
-    }
-    self.player = [[[AVPlayer alloc] initWithURL:model.radioUrl] autorelease];
-    
-    [self.player play];
-    
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-    
-    [self initializeTickerLabelWithText:model.radioName];
-}
 
 - (void)initializeTickerLabelWithText:(NSString *)someText{
     
     self.tickerLabel.text = someText;
     self.tickerLabel.scrollDuration = 4.f;
     self.tickerLabel.fadeLength = self.tickerLabel.frame.size.width*1.5;
-
 }
-
 
 @end

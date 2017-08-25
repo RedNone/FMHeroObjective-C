@@ -4,9 +4,11 @@
 #import "NVTableViewCellForFMView.h"
 #import "NVPlayViewController.h"
 #import "NVRadioDataModel.h"
+#import "NVAudioController.h"
 
 @interface NVFMViewController ()
 @property(nonatomic,retain) NVDataLoader *dataLoader;
+@property(nonatomic,retain) NVAudioController *audioController;
 @end
 
 @implementation NVFMViewController
@@ -17,6 +19,7 @@
     [_tableView release];
     [_indicator release];
     [_dataLoader release];
+    [_audioController release];
     [super dealloc];
 }
 
@@ -24,6 +27,7 @@
     [super viewDidLoad];
     
     self.dataLoader = [NVDataLoader sharedManager];
+    self.audioController = [NVAudioController sharedManager];
     
     [self.dataLoader loadDataWithCompletionBlock:^{
         if(self.dataLoader.radioData){
@@ -54,7 +58,7 @@
     
     cell.nameOfRadioLabel.text = model.radioName;
     
-    if(self.dataLoader.selectRadioWithIndex == indexPath.row){
+    if(self.audioController.selectRadioWithIndex == indexPath.row){
         CABasicAnimation *theAnimation;
         theAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"] ;
         theAnimation.duration=1.0;
@@ -73,9 +77,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NVPlayViewController *controller = (NVPlayViewController*)[self.tabBarController.viewControllers objectAtIndex:1];
-    [controller playMusicWithCurrentRadioId:indexPath.row];
-    self.dataLoader.selectRadioWithIndex = indexPath.row;
+    self.audioController.selectRadioWithIndex = indexPath.row;
+    [self.audioController playMusicWithCurrentRadioId:indexPath.row];
     [tableView reloadData];
 }
 

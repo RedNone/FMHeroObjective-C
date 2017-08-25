@@ -44,8 +44,7 @@
         self.request = [NSURLRequest requestWithURL:self.URL];
         self.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",@"text/plain", nil];
-        self.manager.responseSerializer = self.responseSerializer;
-        self.selectRadioWithIndex = -1;
+        self.manager.responseSerializer = self.responseSerializer;      
         }
     
     return self;
@@ -71,8 +70,9 @@
                 model.radioName = [[array objectAtIndex:i] valueForKey:jsonKeyName];
                 model.radioUrl = [NSURL URLWithString:[[array objectAtIndex:i] valueForKey:jsonKeyUrl]];
                 [_radioData addObject: model];
+                [model release];
             }
-            
+            [array release];
             completionBlock();
         }
     }];
