@@ -3,6 +3,7 @@
 #import "NVConsts.h"
 #import "NVTableViewCellForFMView.h"
 #import "NVPlayViewController.h"
+#import "NVRadioDataModel.h"
 
 @interface NVFMViewController ()
 @property(nonatomic,retain) NVDataLoader *dataLoader;
@@ -47,9 +48,11 @@
    
     NSString* identifire = @"fmCells";
     
+    NVRadioDataModel *model = [self.dataLoader.radioData objectAtIndex:indexPath.row];
+    
     NVTableViewCellForFMView *cell = [tableView dequeueReusableCellWithIdentifier:identifire];
     
-    cell.nameOfRadioLabel.text = [[self.dataLoader.radioData objectAtIndex:indexPath.row] valueForKey:jsonKeyName];
+    cell.nameOfRadioLabel.text = model.radioName;
     
     if(self.dataLoader.selectRadioWithIndex == indexPath.row){
         CABasicAnimation *theAnimation;

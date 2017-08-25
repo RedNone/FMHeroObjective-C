@@ -1,6 +1,7 @@
 #import "NVDataLoader.h"
 #import <AFNetworking/AFNetworking.h>
 #import "NVConsts.h"
+#import "NVRadioDataModel.h"
 
 @interface NVDataLoader ()
 
@@ -59,10 +60,23 @@
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
-            _radioData = [[NSMutableArray alloc] initWithArray:responseObject];
+            NSArray *array = [[NSMutableArray alloc] initWithArray:responseObject];
+            
+            _radioData = [[NSMutableArray alloc] initWithCapacity:[array count]];
+            
+            for(int i = 0; i < [array count]; i++){
+                NVRadioDataModel *model = [NVRadioDataModel new];
+                
+                model.radioId = [[[array objectAtIndex:i] valueForKey:jsonKeyId] intValue];
+                model.radioName = [[array objectAtIndex:i] valueForKey:jsonKeyName];
+                model.radioUrl = [NSURL URLWithString:[[array objectAtIndex:i] valueForKey:jsonKeyUrl]];
+                [_radioData addObject: model];
+            }
+            
             completionBlock();
         }
-           }];
+    }];
+    
     [dataTask resume];
 }
 

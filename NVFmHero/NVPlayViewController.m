@@ -2,7 +2,7 @@
 #import "AVFoundation/AVFoundation.h"
 #import "NVDataLoader.h"
 #import "NVConsts.h"
-
+#import "NVRadioDataModel.h"
 
 @interface NVPlayViewController ()
 @property(nonatomic,assign) int currentRadioId;
@@ -37,7 +37,8 @@
         }
     }
     if(self.dataLoader.selectRadioWithIndex != -1){
-        [self initializeTickerLabelWithText:[[self.dataLoader.radioData objectAtIndex:self.dataLoader.selectRadioWithIndex] valueForKey:jsonKeyName]];
+        NVRadioDataModel *model = [self.dataLoader.radioData objectAtIndex:self.dataLoader.selectRadioWithIndex];
+        [self initializeTickerLabelWithText:model.radioName] ;
     } else{
         self.tickerLabel.text = @"No radio select";
     }
@@ -105,22 +106,19 @@
     
     self.currentRadioId = self.dataLoader.selectRadioWithIndex = radioId;
     
-    NSDictionary *dictionary = [[[NVDataLoader sharedManager] radioData] objectAtIndex:self.currentRadioId];
-    
-    NSString *urlAddress = [dictionary valueForKey:jsonKeyUrl];
-    
-    NSURL *urlStream = [NSURL URLWithString:urlAddress];
+    NVRadioDataModel *model = [self.dataLoader.radioData objectAtIndex:self.currentRadioId];
+   
     
     if(self.player){
         [self.player pause];
     }
-    self.player = [[[AVPlayer alloc] initWithURL:urlStream] autorelease];
+    self.player = [[[AVPlayer alloc] initWithURL:model.radioUrl] autorelease];
     
     [self.player play];
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     
-    [self initializeTickerLabelWithText:[[self.dataLoader.radioData objectAtIndex:self.currentRadioId] valueForKey:jsonKeyName]];
+    [self initializeTickerLabelWithText:model.radioName];
 }
 
 - (void)initializeTickerLabelWithText:(NSString *)someText{

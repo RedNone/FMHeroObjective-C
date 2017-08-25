@@ -19,6 +19,7 @@
 		358F381F1F5011A8009CCDE9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 358F381E1F5011A8009CCDE9 /* Media.xcassets */; };
 		35B172D91F4F1A4D00AE5100 /* NVPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B172D81F4F1A4D00AE5100 /* NVPlayViewController.m */; };
 		35B172DB1F4F264D00AE5100 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B172DA1F4F264D00AE5100 /* AVFoundation.framework */; };
+		35E5615C1F50598700FB038A /* NVRadioDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E5615B1F50598700FB038A /* NVRadioDataModel.m */; };
 		B839945603A63283CD231654 /* Pods_NVFmHero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 750A85205E4220028B49E904 /* Pods_NVFmHero.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,8 @@
 		35B172D71F4F1A4D00AE5100 /* NVPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVPlayViewController.h; sourceTree = "<group>"; };
 		35B172D81F4F1A4D00AE5100 /* NVPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVPlayViewController.m; sourceTree = "<group>"; };
 		35B172DA1F4F264D00AE5100 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		35E5615A1F50598700FB038A /* NVRadioDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVRadioDataModel.h; sourceTree = "<group>"; };
+		35E5615B1F50598700FB038A /* NVRadioDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVRadioDataModel.m; sourceTree = "<group>"; };
 		45EAEC6343702078D1E9082B /* Pods-NVFmHero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVFmHero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NVFmHero/Pods-NVFmHero.debug.xcconfig"; sourceTree = "<group>"; };
 		6EE4BECDF2CE4641D71612EE /* Pods-NVFmHero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVFmHero.release.xcconfig"; path = "Pods/Target Support Files/Pods-NVFmHero/Pods-NVFmHero.release.xcconfig"; sourceTree = "<group>"; };
 		750A85205E4220028B49E904 /* Pods_NVFmHero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NVFmHero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				3554C5191F4EEE1B0018DB12 /* Consts */,
+				35E561591F50595B00FB038A /* Models */,
 				357547691F4EC90C007390D8 /* CustomCells */,
 				357547681F4EC60D007390D8 /* Controllers */,
 				357547651F4EC607007390D8 /* NVDataLoader.h */,
@@ -143,6 +147,15 @@
 				3554C5211F4F04B00018DB12 /* NVTableViewCellForFMView.m */,
 			);
 			name = CustomCells;
+			sourceTree = "<group>";
+		};
+		35E561591F50595B00FB038A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				35E5615A1F50598700FB038A /* NVRadioDataModel.h */,
+				35E5615B1F50598700FB038A /* NVRadioDataModel.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		7D2DE64ED8BCF7C0B9F69CA9 /* Frameworks */ = {
@@ -288,6 +301,7 @@
 				3575474A1F4EB84A007390D8 /* AppDelegate.m in Sources */,
 				357547611F4EC441007390D8 /* NVFMViewController.m in Sources */,
 				357547671F4EC607007390D8 /* NVDataLoader.m in Sources */,
+				35E5615C1F50598700FB038A /* NVRadioDataModel.m in Sources */,
 				35B172D91F4F1A4D00AE5100 /* NVPlayViewController.m in Sources */,
 				3554C5221F4F04B00018DB12 /* NVTableViewCellForFMView.m in Sources */,
 				357547471F4EB84A007390D8 /* main.m in Sources */,
