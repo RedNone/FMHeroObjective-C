@@ -12,12 +12,14 @@
 		357547471F4EB84A007390D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 357547461F4EB84A007390D8 /* main.m */; };
 		3575474A1F4EB84A007390D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 357547491F4EB84A007390D8 /* AppDelegate.m */; };
 		357547531F4EB84A007390D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357547511F4EB84A007390D8 /* Main.storyboard */; };
-		357547551F4EB84A007390D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 357547541F4EB84A007390D8 /* Assets.xcassets */; };
 		357547581F4EB84A007390D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 357547561F4EB84A007390D8 /* LaunchScreen.storyboard */; };
 		357547611F4EC441007390D8 /* NVFMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 357547601F4EC441007390D8 /* NVFMViewController.m */; };
 		357547671F4EC607007390D8 /* NVDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 357547661F4EC607007390D8 /* NVDataLoader.m */; };
+		357B8DDB1F504A2300D48D86 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357B8DDA1F504A2300D48D86 /* QuartzCore.framework */; };
+		358F381F1F5011A8009CCDE9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 358F381E1F5011A8009CCDE9 /* Media.xcassets */; };
 		35B172D91F4F1A4D00AE5100 /* NVPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B172D81F4F1A4D00AE5100 /* NVPlayViewController.m */; };
-		B0306FA10B2F8A6F3C697A1C /* libPods-NVFmHero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 556C329309D45BAC487C0410 /* libPods-NVFmHero.a */; };
+		35B172DB1F4F264D00AE5100 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B172DA1F4F264D00AE5100 /* AVFoundation.framework */; };
+		B839945603A63283CD231654 /* Pods_NVFmHero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 750A85205E4220028B49E904 /* Pods_NVFmHero.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,18 +32,20 @@
 		357547481F4EB84A007390D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		357547491F4EB84A007390D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		357547521F4EB84A007390D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		357547541F4EB84A007390D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		357547571F4EB84A007390D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		357547591F4EB84A007390D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3575475F1F4EC441007390D8 /* NVFMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVFMViewController.h; sourceTree = "<group>"; };
 		357547601F4EC441007390D8 /* NVFMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVFMViewController.m; sourceTree = "<group>"; };
 		357547651F4EC607007390D8 /* NVDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVDataLoader.h; sourceTree = "<group>"; };
 		357547661F4EC607007390D8 /* NVDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVDataLoader.m; sourceTree = "<group>"; };
+		357B8DDA1F504A2300D48D86 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		358F381E1F5011A8009CCDE9 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		35B172D71F4F1A4D00AE5100 /* NVPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVPlayViewController.h; sourceTree = "<group>"; };
 		35B172D81F4F1A4D00AE5100 /* NVPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVPlayViewController.m; sourceTree = "<group>"; };
+		35B172DA1F4F264D00AE5100 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		45EAEC6343702078D1E9082B /* Pods-NVFmHero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVFmHero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NVFmHero/Pods-NVFmHero.debug.xcconfig"; sourceTree = "<group>"; };
-		556C329309D45BAC487C0410 /* libPods-NVFmHero.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NVFmHero.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EE4BECDF2CE4641D71612EE /* Pods-NVFmHero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVFmHero.release.xcconfig"; path = "Pods/Target Support Files/Pods-NVFmHero/Pods-NVFmHero.release.xcconfig"; sourceTree = "<group>"; };
+		750A85205E4220028B49E904 /* Pods_NVFmHero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NVFmHero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +53,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0306FA10B2F8A6F3C697A1C /* libPods-NVFmHero.a in Frameworks */,
+				357B8DDB1F504A2300D48D86 /* QuartzCore.framework in Frameworks */,
+				35B172DB1F4F264D00AE5100 /* AVFoundation.framework in Frameworks */,
+				B839945603A63283CD231654 /* Pods_NVFmHero.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,11 +115,11 @@
 		357547451F4EB84A007390D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				358F381E1F5011A8009CCDE9 /* Media.xcassets */,
 				357547481F4EB84A007390D8 /* AppDelegate.h */,
 				357547491F4EB84A007390D8 /* AppDelegate.m */,
 				357547591F4EB84A007390D8 /* Info.plist */,
 				357547561F4EB84A007390D8 /* LaunchScreen.storyboard */,
-				357547541F4EB84A007390D8 /* Assets.xcassets */,
 				357547461F4EB84A007390D8 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -142,7 +148,9 @@
 		7D2DE64ED8BCF7C0B9F69CA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				556C329309D45BAC487C0410 /* libPods-NVFmHero.a */,
+				357B8DDA1F504A2300D48D86 /* QuartzCore.framework */,
+				35B172DA1F4F264D00AE5100 /* AVFoundation.framework */,
+				750A85205E4220028B49E904 /* Pods_NVFmHero.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -209,7 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				357547581F4EB84A007390D8 /* LaunchScreen.storyboard in Resources */,
-				357547551F4EB84A007390D8 /* Assets.xcassets in Resources */,
+				358F381F1F5011A8009CCDE9 /* Media.xcassets in Resources */,
 				357547531F4EB84A007390D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,9 +231,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NVFmHero/Pods-NVFmHero-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

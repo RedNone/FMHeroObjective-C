@@ -1,13 +1,16 @@
-//
-//  NVPlayViewController.h
-//  NVFmHero
-//
-//  Created by mac-228 on 24.08.17.
-//  Copyright © 2017 mac-228. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import "MarqueeLabel.h"
 
 @interface NVPlayViewController : UIViewController
+
+@property (retain, nonatomic) IBOutlet MarqueeLabel *tickerLabel;
+@property (retain, nonatomic) IBOutlet UIButton *playPauseButton;
+
+- (IBAction)playPauseButton:(id)sender;
+- (IBAction)backButtonAction:(UIButton *)sender;
+- (IBAction)nextButtonAction:(UIButton *)sender;
+
+
+- (void)playMusicWithCurrentRadioId:(int)radioId;
 
 @end

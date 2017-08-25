@@ -15,6 +15,7 @@
 @implementation NVDataLoader
 
 - (void)dealloc{
+    NSLog(@"dealloc");
     [_radioData release];
     [_configuration release];
     [_manager release], _manager = nil;
@@ -43,6 +44,7 @@
         self.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",@"text/plain", nil];
         self.manager.responseSerializer = self.responseSerializer;
+        self.selectRadioWithIndex = -1;
         }
     
     return self;
@@ -50,17 +52,17 @@
 
 - (void)loadDataWithCompletionBlock:(void (^)(void))completionBlock
 {
-     __block NVDataLoader *weakSelf = self;
-    
+     //__block NVDataLoader *weakSelf = self;
+    [completionBlock autorelease];
+
     NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:self.request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
-            weakSelf.radioData = [[NSMutableArray alloc] initWithArray:responseObject] ;
+            _radioData = [[NSMutableArray alloc] initWithArray:responseObject];
             completionBlock();
         }
-        [completionBlock release];
-    }];
+           }];
     [dataTask resume];
 }
 
