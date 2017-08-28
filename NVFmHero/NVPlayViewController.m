@@ -21,14 +21,15 @@
     [_player release];
     [_tickerLabel release];
     [_audioController release];
+    [_volumeSlider release];
     [super dealloc];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataLoader = [[[NVDataLoader sharedManager] retain] autorelease];
-    self.audioController = [[[NVAudioController sharedManager] retain] autorelease];
+    self.dataLoader = [NVDataLoader sharedManager];
+    self.audioController = [NVAudioController sharedManager];
     
     NSLog(@"viewDidLoad");
 }
@@ -109,6 +110,10 @@
         }
         
     }
+}
+
+- (IBAction)volumeSliderAction:(id)sender {
+    [self.audioController changeVolumeWithFloat:self.volumeSlider.value];
 }
 
 #pragma mark - Radio methods

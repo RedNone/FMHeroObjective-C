@@ -8,5 +8,6 @@
 
 + (NVAudioController *)sharedManager;
 - (void)playMusicWithCurrentRadioId:(int)radioId;
+- (void)changeVolumeWithFloat:(CGFloat)someVolume;
 
 @end

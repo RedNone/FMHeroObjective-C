@@ -6,6 +6,8 @@
 
 @interface NVAudioController ()
 @property(nonatomic,retain) NVDataLoader *dataLoader;
+@property(nonatomic,assign) CGFloat volume;
+@property(nonatomic,assign) bool isVolumeChanged;
 @end
 
 @implementation NVAudioController
@@ -52,11 +54,24 @@
     
     NSError *error;
     
+    if(self.isVolumeChanged){
+        self.player.volume = self.volume;
+    } else{
+        self.player.volume = 0.5f;
+    }
+    
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
     
     if(error){
         NSLog(@"%@",error);
     }
+    
 }
+
+- (void)changeVolumeWithFloat:(CGFloat)someVolume{
+    self.player.volume = someVolume;
+    self.isVolumeChanged = YES;
+}
+
 
 @end

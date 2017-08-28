@@ -41,7 +41,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9xE-zM-0g1">
-                                                    <rect key="frame" x="13" y="37" width="362" height="2"/>
+                                                    <rect key="frame" x="13" y="35" width="362" height="2"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
@@ -132,6 +132,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CmH-Oc-po2">
+                                        <rect key="frame" x="6" y="166" width="363" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="volumeSliderAction:" destination="8rJ-Kc-sve" eventType="valueChanged" id="VJ3-iO-htf"/>
+                                        </connections>
+                                    </slider>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -142,6 +149,7 @@
                     <connections>
                         <outlet property="playPauseButton" destination="7Vw-Hc-pHN" id="Qpq-SG-mIL"/>
                         <outlet property="tickerLabel" destination="ZEP-fI-XvZ" id="P8d-n4-CRQ"/>
+                        <outlet property="volumeSlider" destination="CmH-Oc-po2" id="bDv-oi-Yle"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

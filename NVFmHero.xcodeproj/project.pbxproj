@@ -24,6 +24,19 @@
 		B839945603A63283CD231654 /* Pods_NVFmHero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 750A85205E4220028B49E904 /* Pods_NVFmHero.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		35E561751F50709F00FB038A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3554C51A1F4EEE310018DB12 /* NVConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVConsts.h; sourceTree = "<group>"; };
 		3554C51B1F4EEE310018DB12 /* NVConsts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVConsts.m; sourceTree = "<group>"; };
@@ -49,6 +62,7 @@
 		35E5615B1F50598700FB038A /* NVRadioDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVRadioDataModel.m; sourceTree = "<group>"; };
 		35E5615D1F50668200FB038A /* NVAudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVAudioController.h; sourceTree = "<group>"; };
 		35E5615E1F50668200FB038A /* NVAudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVAudioController.m; sourceTree = "<group>"; };
+		35E561651F50709F00FB038A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		45EAEC6343702078D1E9082B /* Pods-NVFmHero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVFmHero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NVFmHero/Pods-NVFmHero.debug.xcconfig"; sourceTree = "<group>"; };
 		6EE4BECDF2CE4641D71612EE /* Pods-NVFmHero.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NVFmHero.release.xcconfig"; path = "Pods/Target Support Files/Pods-NVFmHero/Pods-NVFmHero.release.xcconfig"; sourceTree = "<group>"; };
 		750A85205E4220028B49E904 /* Pods_NVFmHero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NVFmHero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +183,7 @@
 				357B8DDA1F504A2300D48D86 /* QuartzCore.framework */,
 				35B172DA1F4F264D00AE5100 /* AVFoundation.framework */,
 				750A85205E4220028B49E904 /* Pods_NVFmHero.framework */,
+				35E561651F50709F00FB038A /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -186,6 +201,7 @@
 				357547401F4EB84A007390D8 /* Resources */,
 				94CFB50107A8364ACF832728 /* [CP] Embed Pods Frameworks */,
 				CE1D15739E6695B220A9A173 /* [CP] Copy Pods Resources */,
+				35E561751F50709F00FB038A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -207,7 +223,13 @@
 				TargetAttributes = {
 					357547411F4EB84A007390D8 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = X85RG62ZLZ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -433,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				DEVELOPMENT_TEAM = X85RG62ZLZ;
 				INFOPLIST_FILE = NVFmHero/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -447,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				DEVELOPMENT_TEAM = X85RG62ZLZ;
 				INFOPLIST_FILE = NVFmHero/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
