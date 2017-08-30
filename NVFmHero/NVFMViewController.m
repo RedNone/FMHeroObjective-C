@@ -5,10 +5,12 @@
 #import "NVPlayViewController.h"
 #import "NVRadioDataModel.h"
 #import "NVAudioController.h"
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 @interface NVFMViewController ()
 @property(nonatomic,retain) NVDataLoader *dataLoader;
 @property(nonatomic,retain) NVAudioController *audioController;
+@property(nonatomic,retain) DBUserClient *clientDropBox;
 @end
 
 @implementation NVFMViewController
@@ -20,6 +22,8 @@
     [_indicator release];
     [_dataLoader release];
     [_audioController release];
+    [_clientDropBox release];
+    [_logInDropBox release];
     [super dealloc];
 }
 
@@ -29,18 +33,46 @@
     self.dataLoader = [NVDataLoader sharedManager];
     self.audioController = [NVAudioController sharedManager];
     
-    [self.dataLoader loadDataWithCompletionBlock:^{
-        if(self.dataLoader.radioData){
-            [self.indicator setHidden:YES];
-            [self.tableView setHidden:NO];
-            [self.tableView reloadData];
-        }
-    }];
+  
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+   
+    self.clientDropBox = [DBClientsManager authorizedClient];
+    
+    bool isClientAuthorized = [self.clientDropBox isAuthorized];
+    
+    if(isClientAuthorized){
+        [self.logInDropBox setHidden:YES];
+    } else{
+        [self.indicator setHidden:YES];
+    }
+    
+    
+    if(isClientAuthorized || self.dataLoader.radioData){
+        [self.dataLoader loadDataWithCompletionBlock:^{
+            if(self.dataLoader.radioData){
+                [self.indicator setHidden:YES];
+                [self.logInDropBox setHidden:YES];
+                [self.tableView setHidden:NO];                
+                [self.tableView reloadData];                
+            }
+        }];
+    }
 }
+
+
+- (IBAction)logInDropBox:(UIButton *)sender {
+    
+    [DBClientsManager authorizeFromController:[UIApplication sharedApplication]
+                                   controller:self
+                                      openURL:^(NSURL *url) {
+                                          [[UIApplication sharedApplication] openURL:url];
+                                      }];
+
+}
+
 
 #pragma mark - UITableViewDataSource
 
@@ -81,5 +113,6 @@
     [self.audioController playMusicWithCurrentRadioId:indexPath.row];
     [tableView reloadData];
 }
+
 
 @end

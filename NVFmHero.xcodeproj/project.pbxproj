@@ -17,6 +17,7 @@
 		357547671F4EC607007390D8 /* NVDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 357547661F4EC607007390D8 /* NVDataLoader.m */; };
 		357B8DDB1F504A2300D48D86 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357B8DDA1F504A2300D48D86 /* QuartzCore.framework */; };
 		358F381F1F5011A8009CCDE9 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 358F381E1F5011A8009CCDE9 /* Media.xcassets */; };
+		35963F8A1F56E83F004D5230 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35963F891F56E83F004D5230 /* Security.framework */; };
 		35B172D91F4F1A4D00AE5100 /* NVPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B172D81F4F1A4D00AE5100 /* NVPlayViewController.m */; };
 		35B172DB1F4F264D00AE5100 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B172DA1F4F264D00AE5100 /* AVFoundation.framework */; };
 		35E5615C1F50598700FB038A /* NVRadioDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E5615B1F50598700FB038A /* NVRadioDataModel.m */; };
@@ -55,6 +56,7 @@
 		357547661F4EC607007390D8 /* NVDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVDataLoader.m; sourceTree = "<group>"; };
 		357B8DDA1F504A2300D48D86 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		358F381E1F5011A8009CCDE9 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		35963F891F56E83F004D5230 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		35B172D71F4F1A4D00AE5100 /* NVPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVPlayViewController.h; sourceTree = "<group>"; };
 		35B172D81F4F1A4D00AE5100 /* NVPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVPlayViewController.m; sourceTree = "<group>"; };
 		35B172DA1F4F264D00AE5100 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35963F8A1F56E83F004D5230 /* Security.framework in Frameworks */,
 				357B8DDB1F504A2300D48D86 /* QuartzCore.framework in Frameworks */,
 				35B172DB1F4F264D00AE5100 /* AVFoundation.framework in Frameworks */,
 				B839945603A63283CD231654 /* Pods_NVFmHero.framework in Frameworks */,
@@ -180,6 +183,7 @@
 		7D2DE64ED8BCF7C0B9F69CA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				35963F891F56E83F004D5230 /* Security.framework */,
 				357B8DDA1F504A2300D48D86 /* QuartzCore.framework */,
 				35B172DA1F4F264D00AE5100 /* AVFoundation.framework */,
 				750A85205E4220028B49E904 /* Pods_NVFmHero.framework */,
@@ -274,11 +278,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-NVFmHero/Pods-NVFmHero-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectiveDropboxOfficial.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

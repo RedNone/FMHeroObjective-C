@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface NVFMViewController : UIViewController
+
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+@property (retain, nonatomic) IBOutlet UIButton *logInDropBox;
+
+- (IBAction)logInDropBox:(UIButton *)sender;
+
 @end

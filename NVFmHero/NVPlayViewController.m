@@ -54,6 +54,11 @@
 #pragma mark - Button Actions
 
 - (IBAction)playPauseButton:(id)sender {
+    
+    if(!self.dataLoader.radioData){
+        return;
+    }
+    
     if(!self.audioController.player){
         [self.audioController playMusicWithCurrentRadioId:0];
     }

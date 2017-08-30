@@ -41,6 +41,8 @@
 
 - (void)playMusicWithCurrentRadioId:(int)radioId{
     
+    
+    
     self.selectRadioWithIndex = radioId;
     
     NVRadioDataModel *model = [self.dataLoader.radioData objectAtIndex:self.selectRadioWithIndex];

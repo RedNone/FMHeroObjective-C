@@ -2,6 +2,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "NVConsts.h"
 #import "NVRadioDataModel.h"
+#import <ObjectiveDropboxOfficial/ObjectiveDropboxOfficial.h>
 
 @interface NVDataLoader ()
 
@@ -10,6 +11,7 @@
 @property(nonatomic,retain) NSURL *URL;
 @property(nonatomic,retain) NSURLRequest *request;
 @property(nonatomic,retain) AFJSONResponseSerializer *responseSerializer;
+@property(nonatomic,retain) DBUserClient *clientDropBox;
 
 @end
 
@@ -23,6 +25,7 @@
     [_URL release];
     [_request release];
     [_responseSerializer release];
+    [_clientDropBox release];
     [super dealloc];
 }
 
@@ -52,7 +55,10 @@
 
 - (void)loadDataWithCompletionBlock:(void (^)(void))completionBlock
 {
-     //__block NVDataLoader *weakSelf = self;
+  /*   
+    //////////////////////////////////////LOAD DATA WITH AFNETWORKING////////////////////////////////////////////////////////////
+   
+   //__block NVDataLoader *weakSelf = self;
     [completionBlock autorelease];
 
     NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:self.request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
@@ -76,8 +82,37 @@
             completionBlock();
         }
     }];
+    [dataTask resume];*/
     
-    [dataTask resume];
+    
+    self.clientDropBox = [DBClientsManager authorizedClient];
+    [completionBlock autorelease];
+   
+    
+   [[self.clientDropBox.filesRoutes downloadData:@"/FMJson.json"]
+     setResponseBlock:^(DBFILESFileMetadata *result, DBFILESDownloadError *routeError, DBRequestError *error,
+                        NSData *fileContents) {
+         if (result) {
+             
+             NSMutableArray *array = [NSJSONSerialization JSONObjectWithData:fileContents options: 0 error:nil];
+             
+             _radioData = [[NSMutableArray alloc] initWithCapacity:[array count]];
+             
+             for (int i = 0; i < [array count]; i++) {
+                 NSDictionary *dict = [array objectAtIndex:i];
+                 NVRadioDataModel *model = [NVRadioDataModel new];
+                 model.radioId = [[dict valueForKey:@"id"] intValue];
+                 model.radioName = [dict valueForKey:@"name"];
+                 model.radioUrl = [dict valueForKey:@"url"];
+                 [_radioData addObject:model];
+                 [model release];
+             }
+             
+             completionBlock();
+         } else {
+             NSLog(@"%@\n%@\n", routeError, error);
+         }        
+     }];
 }
 
 @end
